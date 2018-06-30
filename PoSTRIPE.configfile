@@ -1,13 +1,13 @@
 #!/bin/bash
 
 BASEDIR=/scratch/rtraborn/STRIPEseq_para_sing
-GENOME_DIR=PdGENOME
+GENOME_DIR=PoGENOME
 GENOME_FILE=pdec_mod.fa
 GENOME_GFF=pdec.gff3
 RNAfile=${BASEDIR}/${GENOME_DIR}/ptet-rDNA.fa
 
 EXPERIMENT=STRIPE_test
-SAMPLE=PdSTRIPE
+SAMPLE=PoSTRIPE
 fastqDIR=${BASEDIR}/${EXPERIMENT}/fastq
 SCRIPTS=${BASEDIR}/${EXPERIMENT}/scripts
 
