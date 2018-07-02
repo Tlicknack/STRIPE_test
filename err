@@ -1,0 +1,40 @@
+mkdir: cannot create directory '/N/u/tlicknac/Carbonate/STRIPE_Novaurelia//STRIPE_test/fastq': No such file or directory
+./xdoit: line 12: cd: /N/u/tlicknac/Carbonate/STRIPE_Novaurelia//STRIPE_test/fastq: No such file or directory
+time /N/u/tlicknac/Carbonate/STRIPE_Novaurelia//STRIPE_test/scripts/run_trimmomatic.sh
+./xdoit: line 17: /N/u/tlicknac/Carbonate/STRIPE_Novaurelia//STRIPE_test/scripts/run_trimmomatic.sh: No such file or directory
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+./xdoit: line 32: tagdust: command not found
+./xdoit: line 33: tagdust: command not found
+./xdoit: line 34: tagdust: command not found
+time /N/u/tlicknac/Carbonate/STRIPE_Novaurelia//STRIPE_test/scripts/run_BWA_alignment.sh
+./xdoit: line 41: /N/u/tlicknac/Carbonate/STRIPE_Novaurelia//STRIPE_test/scripts/run_BWA_alignment.sh: No such file or directory
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+./xdoit: line 47: cd: /N/u/tlicknac/Carbonate/STRIPE_Novaurelia//STRIPE_test/BWAdir: No such file or directory
+samtools sort -n *rep?_filtered.bam | samtools view -h > *rep?_filtered_sorted.sam
+[E::hts_open_format] Failed to open file *rep?_filtered.bam
+samtools sort: can't open "*rep?_filtered.bam": No such file or directory
+[E::hts_open_format] Failed to open file PnSTRIPE_rep1_filtered_sorted.sam
+samtools view: failed to open "PnSTRIPE_rep1_filtered_sorted.sam" for reading: No such file or directory
+cat: Scrubbed-PnSTRIPE_rep1.sam: No such file or directory
+[E::hts_open_format] Failed to open file PnSTRIPE_rep2_filtered_sorted.sam
+samtools view: failed to open "PnSTRIPE_rep2_filtered_sorted.sam" for reading: No such file or directory
+cat: Scrubbed-PnSTRIPE_rep2.sam: No such file or directory
+[E::hts_open_format] Failed to open file PnSTRIPE_rep3_filtered_sorted.sam
+samtools view: failed to open "PnSTRIPE_rep3_filtered_sorted.sam" for reading: No such file or directory
+cat: Scrubbed-PnSTRIPE_rep3.sam: No such file or directory
+./xdoit: line 94: cd: tsr: No such file or directory
+mkdir: cannot create directory 'BAMDIR': File exists
+ln: failed to create symbolic link './Clean-*': File exists
+ln: failed to create symbolic link 'PnGenome.gff3': File exists
+... now running Rscript STRIPE_testwf*.Rscript
+./xdoit: line 104: ./xrunSwf: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s

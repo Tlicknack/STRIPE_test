@@ -1,9 +1,9 @@
 #!/bin/bash
 
-BASEDIR=/scratch/rtraborn/STRIPEseq_para_sing
-GENOME_DIR=PnGENOME
-GENOME_FILE=pdec_mod.fa
-GENOME_GFF=pdec.gff3
+BASEDIR=/N/u/tlicknac/Carbonate/STRIPE_Novaurelia/
+GENOME_DIR=PnGENOME/
+GENOME_FILE=pnov_mod.fa
+GENOME_GFF=pnov.gff3
 RNAfile=${BASEDIR}/${GENOME_DIR}/ptet-rDNA.fa
 
 EXPERIMENT=STRIPE_test

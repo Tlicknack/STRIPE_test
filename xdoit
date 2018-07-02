@@ -3,7 +3,7 @@
 #Setting variables:
 #
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source ${DIR}/PdSTRIPE.configfile 
+source ${DIR}/PnSTRIPE.configfile 
 
 #No further edits necessary from here on ...
 #
@@ -63,14 +63,14 @@ ${SCRIPTS}/scrubSAMfile.pl -p -i 50 -I 4000 -t 5000 -o $(basename $BAM _filtered
 
 #Newly added
 #----------------------------------------------------------------------------------------------------------------------------------------
-samtools view -H PdSTRIPE_rep1_filtered_sorted.sam > tmpheader.sam
-cat tmpheader.sam Scrubbed-PdSTRIPE_rep1.sam | samtools view -h | samtools sort -@ 8 -o Clean-PdSTRIPE_rep1.bam
+samtools view -H PnSTRIPE_rep1_filtered_sorted.sam > tmpheader.sam
+cat tmpheader.sam Scrubbed-PnSTRIPE_rep1.sam | samtools view -h | samtools sort -@ 8 -o Clean-PnSTRIPE_rep1.bam
 
-samtools view -H PdSTRIPE_rep2_filtered_sorted.sam > tmpheader.sam
-cat tmpheader.sam Scrubbed-PdSTRIPE_rep2.sam | samtools view -h | samtools sort -@ 8 -o Clean-PdSTRIPE_rep2.bam
+samtools view -H PnSTRIPE_rep2_filtered_sorted.sam > tmpheader.sam
+cat tmpheader.sam Scrubbed-PnSTRIPE_rep2.sam | samtools view -h | samtools sort -@ 8 -o Clean-PnSTRIPE_rep2.bam
 
-samtools view -H PdSTRIPE_rep3_filtered_sorted.sam > tmpheader.sam
-cat tmpheader.sam Scrubbed-PdSTRIPE_rep3.sam | samtools view -h | samtools sort -@ 8 -o Clean-PdSTRIPE_rep3.bam
+samtools view -H PnSTRIPE_rep3_filtered_sorted.sam > tmpheader.sam
+cat tmpheader.sam Scrubbed-PnSTRIPE_rep3.sam | samtools view -h | samtools sort -@ 8 -o Clean-PnSTRIPE_rep3.bam
 #----------------------------------------------------------------------------------------------------------------------------------------
 
 #Old version. 									### had issues loading PdSTRIPE.sam
@@ -98,7 +98,7 @@ cd tsr
  for BAM in ../../BWAdir/Clean-*; do                                       #changed to just Clean-* instead of Clean*-bam ... should only be 3 Clean files anyway
      ln -s ${BAM} ./                                                       # was previosly ln -s ../../${BAM} ./  ### This created broken links
   done
-     ln -s ${BASEDIR}/${GENOME_DIR}/${GENOME_GFF} PdGenome.gff3
+     ln -s ${BASEDIR}/${GENOME_DIR}/${GENOME_GFF} PnGenome.gff3
      cd ..
 echo "... now running Rscript ${EXPERIMENT}wf*.Rscript"
  time ./xrunSwf all
