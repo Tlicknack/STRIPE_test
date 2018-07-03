@@ -1,24 +1,24 @@
 #!/bin/bash
 
-BASEDIR=/N/u/tlicknac/Carbonate/STRIPE_Novaurelia/
+BASEDIR=/N/dc2/scratch/tlicknac/
 GENOME_DIR=PnGENOME/
 GENOME_FILE=pnov_mod.fa
 GENOME_GFF=pnov.gff3
-RNAfile=${BASEDIR}/${GENOME_DIR}/ptet-rDNA.fa
+RNAfile=/N/dc2/scratch/tlicknac/PnGENOME/ptet-rDNA.fa
 
-EXPERIMENT=STRIPE_test
+EXPERIMENT=STRIPE_Novaurelia/
 SAMPLE=PnSTRIPE
 fastqDIR=${BASEDIR}/${EXPERIMENT}/fastq
 SCRIPTS=${BASEDIR}/${EXPERIMENT}/scripts
 
-BWA=bwa
-PYTHON3=python3
+BWA=/N/soft/rhel7/bwa/0.7.12/bwa
+PYTHON3=/N/soft/rhel7/python/3.6.1a/python3
 RSCRIPT=Rscript
-SAMTOOLS=samtools
-SRATOOLKIT=~/genome_analysis/sratoolkit.2.8.2-1-ubuntu64/bin/
-TAGDUST=tagdust
-TRIMMOMATIC=~/genome_analysis/trimmomatic/Trimmomatic-0.36/trimmomatic-0.36.jar    
-TruSeq2PE=${BASEDIR}/${GENOME_DIR}/DpSTRIPE-PE.fa
+SAMTOOLS=/N/soft/rhel7/samtools/1.5/bin/samtools
+SRATOOLKIT=/N/soft/rhel7/sra-toolkit/2.8.2/bin/
+TAGDUST=/N/u/tlicknac/Carbonate/tagdust-2.33/src/tagdust
+TRIMMOMATIC=/N/soft/rhel7/trimmomatic/0.36/trimmomatic-0.36.jar
+TruSeq2PE=/N/u/tlicknac/Carbonate/PnGENOME/DpSTRIPE-PE.fa
 
 THREADS=10
 
