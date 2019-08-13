@@ -6,9 +6,9 @@ GENOME_FILE=pnov_mod.fa
 GENOME_GFF=pnov.gff3
 RNAfile=${BASEDIR}/${GENOME_DIR}/ptet-rDNA.fa
 
-EXPERIMENT=STRIPE_Nov/
+EXPERIMENT=STRIPE_test/
 SAMPLE=PnSTRIPE
-fastqDIR=${BASEDIR}/${EXPERIMENT}/fastq
+fastqDIR=${BASEDIR}/${EXPERIMENT}/fastq  
 SCRIPTS=${BASEDIR}/${EXPERIMENT}/scripts
 
 BWA=/N/soft/rhel7/bwa/0.7.12/bwa
@@ -16,12 +16,11 @@ PYTHON3=/N/soft/rhel7/python/3.6.1a/python3
 RSCRIPT=Rscript
 SAMTOOLS=/N/soft/rhel7/samtools/1.5/bin/samtools
 SRATOOLKIT=/N/soft/rhel7/sra-toolkit/2.8.2/bin/
-TAGDUST=/N/u/tlicknac/Carbonate/tagdust-2.33/src/tagdust
+TAGDUST=/N/u/tlicknac/Carbonate/software/tagdust-2.33/src/tagdust
 TRIMMOMATIC=/N/soft/rhel7/trimmomatic/0.36/trimmomatic-0.36.jar
-TruSeq2PE=/N/dc2/scratch/tlicknac/PdGENOME/DpSTRIPE-PE.fa
+TruSeq2PE=/N/dc2/scratch/tlicknac/PnGENOME/DpSTRIPE-PE.fa
 THREADS=10
 
 THREADS=10
 
 R_PROFILE_USER=""
-
