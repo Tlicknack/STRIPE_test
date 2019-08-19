@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#Setting variables:
-#
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source ${DIR}/configfile
 
@@ -22,39 +20,40 @@ echo "Starting alignments ..."
 for fq in ${fastqDIR}/*_trno_tagdusted_READ?.fq;
 do
 
- 	echo "bwa aln -t ${THREADS} -n 3 ${GENOME_DIR}/${GENOME_FILE} -f $(basename ${fq} .fq).sai ${fq}"
-  	${BWA}    aln -t ${THREADS} -n 3 ${GENOME_DIR}/${GENOME_FILE} -f $(basename ${fq} .fq).sai ${fq}
+        echo "bwa aln -t ${THREADS} -n 3 ${GENOME_DIR}/${GENOME_FILE} -f $(basename ${fq} .fq).sai ${fq}"
+        ${BWA}    aln -t ${THREADS} -n 3 ${GENOME_DIR}/${GENOME_FILE} -f $(basename ${fq} .fq).sai ${fq}
 
 done
+
+#NEW Alignment
+bwa mem -t ${THREADS} ${GENOME_DIR}/${GENOME_FILE} -M ${BASEDIR}/${EXPERIMENT}/fastq/PjSTRIPE_rep1_trno_tagdusted_READ1.fq ${BASEDIR}/${EXPERIMENT}/fastq/PjSTRIPE_rep1_trno_tagdusted_READ2.fq > tmp1
+
+bwa mem -t ${THREADS} ${GENOME_DIR}/${GENOME_FILE} -M ${BASEDIR}/${EXPERIMENT}/fastq/PjSTRIPE_rep2_trno_tagdusted_READ1.fq ${BASEDIR}/${EXPERIMENT}/fastq/PjSTRIPE_rep2_trno_tagdusted_READ2.fq > tmp2
+
+bwa mem -t ${THREADS} ${GENOME_DIR}/${GENOME_FILE} -M ${BASEDIR}/${EXPERIMENT}/fastq/PjSTRIPE_rep3_trno_tagdusted_READ1.fq ${BASEDIR}/${EXPERIMENT}/fastq/PjSTRIPE_rep3_trno_tagdusted_READ2.fq > tmp3
+
+ #then cat this into --> 
+cat tmp1 | samtools view -uS - | samtools sort -O BAM - > PjSTRIPE_rep1_sorted.bam
+cat tmp2 | samtools view -uS - | samtools sort -O BAM - > PjSTRIPE_rep2_sorted.bam
+cat tmp3 | samtools view -uS - | samtools sort -O BAM - > PjSTRIPE_rep3_sorted.bam
 
 for fq in ${fastqDIR}/*_trno_tagdusted_READ1.fq; 
 do
 
-#       read1=$fq
-#	read2=$(basename $fq _READ1.fq)_READ2.fq
-#       sai1=$(basename $fq _READ1.fq)_READ1.sai
-#	sai2=$(basename $fq _READ1.fq)_READ2.sai
-#	SORTED_BAM=$(basename $fq _trno_tagdusted_READ1.fq)_sorted.bam
-
-echo "bwa sampe ${GENOME_DIR}/${GENOME_FILE} $(basename $fq _READ1.fq)_READ1.sai $(basename $fq _READ1.fq)_READ2.sai \
-	${fastqDIR}/$read1 ${fastqDIR}/$read2 | \
-	samtools view -uS - | \
-	samtools sort -O BAM - > $(basename $fq _trno_tagdusted_READ1.fq)_sorted.bam"
-
-${BWA} sampe ${GENOME_DIR}/${GENOME_FILE} $(basename $fq _READ1.fq)_READ1.sai $(basename $fq _READ1.fq)_READ2.sai $fq $fastqDIR/$(basename $fq _READ1.fq)_READ2.fq | \
-	samtools view -uS - | \
-	samtools sort -O BAM - > $(basename $fq _trno_tagdusted_READ1.fq)_sorted.bam
-
 echo "samtools index -b $(basename $fq _trno_tagdusted_READ1.fq)_sorted.bam "
 ${SAMTOOLS} index -b $(basename $fq _trno_tagdusted_READ1.fq)_sorted.bam
 
-#FILTERED_BAM=$(basename $fq _trno_tagdusted_READ1.fq)_filtered.bam
+#indexing makes them .bam.bai
+
 #.. post-alignment filtering for proper alignments and MAPQ >= 10:
-#
-echo "samtools view -f 2 -q 10 -u ${SORTED_BAM} | samtools    sort -O BAM -@ 10 - > $(basename $fq _trno_tagdusted_READ1.fq)_filtered.bam"
+
+echo "samtools view -f 2 -q 10 -u $(basename $fq _trno_tagdusted_READ1.fq)_sorted.bam | samtools    sort -O BAM -@ 10 - > $(basename $fq _trno_tagdusted_READ1.fq)_filtered.bam"
 ${SAMTOOLS}    view -f 2 -q 10 -u $(basename $fq _trno_tagdusted_READ1.fq)_sorted.bam | ${SAMTOOLS} sort -O BAM -@ 10 - > $(basename $fq _trno_tagdusted_READ1.fq)_filtered.bam
 
 echo "samtools index -b $(basename $fq _trno_tagdusted_READ1.fq)_filtered.bam"
 ${SAMTOOLS}    index -b $(basename $fq _trno_tagdusted_READ1.fq)_filtered.bam
 
+#indexing to filtered.bam.bai
+
 done
+

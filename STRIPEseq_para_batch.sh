@@ -14,7 +14,7 @@ module load trimmomatic
 module unload python
 module load python/3.6.1 
 
-WD=/N/dc2/scratch/tlicknac/STRIPE_Jen/
+WD=/N/dc2/scratch/tlicknac/STRIPE_test/
 
 cd $WD
 
